@@ -6,7 +6,7 @@ type Client struct {
 	XMLName xml.Name `xml:"Client"`
 	Method  string   `xml:"method,attr,omitempty"`
 	Url     string   `xml:"URL,omitempty"`
-	Name    string   `xml:",chardata"`
+	Name    string   `xml:",innerxml"`
 }
 
 type Conference struct {
@@ -18,7 +18,7 @@ type Conference struct {
 	WaitUrl                string   `xml:"waitUrl,attr,omitempty"`
 	WaitMethod             string   `xml:"waitMethod,attr,omitempty"`
 	MaxParticipants        int      `xml:"maxParticipants,attr,omitempty"`
-	Name                   string   `xml:",chardata"`
+	Name                   string   `xml:",innerxml"`
 }
 
 type Dial struct {
@@ -30,7 +30,7 @@ type Dial struct {
 	TimeLimit    int      `xml:"timeLimit,attr,omitempty"`
 	CallerId     string   `xml:"callerId,attr,omitempty"`
 	Record       bool     `xml:"record,attr,omitempty"`
-	Number       string   `xml:",chardata"`
+	Number       string   `xml:",innerxml"`
 	Nested       []interface{}
 }
 
@@ -40,7 +40,7 @@ type Enqueue struct {
 	Method        string   `xml:"method,attr,omitempty"`
 	WaitUrl       string   `xml:"waiUrl,attr,omitempty"`
 	WaitUrlMethod string   `xml:"waiUrlMethod,attr,omitempty"`
-	Name          string   `xml:",chardata"`
+	Name          string   `xml:",innerxml"`
 }
 
 type Hangup struct {
@@ -67,7 +67,7 @@ type Number struct {
 	SendDigits string   `xml:"sendDigits,attr,omitempty"`
 	Url        string   `xml:"url,attr,omitempty"`
 	Method     string   `xml:"method,attr,omitempty"`
-	Number     string   `xml:",chardata"`
+	Number     string   `xml:",innerxml"`
 }
 
 type Pause struct {
@@ -79,14 +79,14 @@ type Play struct {
 	XMLName xml.Name `xml:"Play"`
 	Loop    int      `xml:"loop,attr,omitempty"`
 	Digits  int      `xml:"digits,attr,omitempty"`
-	Url     string   `xml:",chardata"`
+	Url     string   `xml:",innerxml"`
 }
 
 type Queue struct {
 	XMLName xml.Name `xml:"Queue"`
 	Url     string   `xml:"url,attr,omitempty"`
 	Method  string   `xml:"method,attr,omitempty"`
-	Name    string   `xml:",chardata"`
+	Name    string   `xml:",innerxml"`
 }
 
 type Record struct {
@@ -104,7 +104,7 @@ type Record struct {
 type Redirect struct {
 	XMLName xml.Name `xml:"Redirect"`
 	Method  string   `xml:"method,attr,omitempty"`
-	Url     string   `xml:",chardata"`
+	Url     string   `xml:",innerxml"`
 }
 
 type Reject struct {
@@ -122,7 +122,7 @@ type Say struct {
 	Voice    string   `xml:"voice,attr,omitempty"`
 	Language string   `xml:"language,attr,omitempty"`
 	Loop     int      `xml:"loop,attr,omitempty"`
-	Text     string   `xml:",chardata"`
+	Text     string   `xml:",innerxml"`
 }
 
 type Sip struct {
@@ -131,7 +131,7 @@ type Sip struct {
 	Password string   `xml:"password,attr,omitempty"`
 	Url      string   `xml:"url,attr,omitempty"`
 	Method   string   `xml:"method,attr,omitempty"`
-	Address  string   `xml:",chardata"`
+	Address  string   `xml:",innerxml"`
 }
 
 type Gather struct {

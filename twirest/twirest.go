@@ -143,20 +143,12 @@ func queryString(reqSt interface{}) (qryStr string) {
 		CreateQueue, ChangeQueue, DeQueue, Conferences, Participants:
 		for i := 0; i < reflect.ValueOf(reqSt).NumField(); i++ {
 			fld := reflect.ValueOf(reqSt).Type().Field(i)
-			val := reflect.ValueOf(reqSt).Field(i)
+			val := reflect.ValueOf(reqSt).Field(i).String()
 
-			if fld.Type.Kind() == reflect.String {
-				if string(fld.Tag) != "" && val.String() != "" {
-					qryStr += string(fld.Tag) + url.QueryEscape(val.String()) + "&"
-				}
-			}
-
-			if fld.Type.Kind() == reflect.Slice {
-				if val.Type() == reflect.TypeOf([]string(nil)) && string(fld.Tag) != "" {
-					for j := 0; j < val.Len(); j++ {
-						qryStr += string(fld.Tag) + url.QueryEscape(val.Index(j).String()) + "&"
-					}
-				}
+			if fld.Type.Kind() == reflect.String &&
+				string(fld.Tag) != "" && val != "" {
+				qryStr += string(fld.Tag) +
+					url.QueryEscape(val) + "&"
 			}
 		}
 		// remove the last '&' if we created a query string
